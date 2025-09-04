@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Secret Building Discovered | NUET</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+    <style>
+        :root {
+            --bg-primary: #0B0F14;
+            --bg-secondary: #0F141B;
+            --bg-card: #0F141B;
+            --text-primary: #E6EDF3;
+            --text-muted: #9AA7B2;
+            --accent-teal: #20E3B2;
+            --accent-purple: #8B5CF6;
+            --accent-orange: #FF6B6B;
+            --gradient-primary: linear-gradient(135deg, var(--accent-teal), var(--accent-purple));
+            --gradient-bg: linear-gradient(135deg, #0B0F14 0%, #0F141B 50%, #141B24 100%);
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+            --transition-smooth: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 4s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .floating-404 {
+            position: absolute;
+            font-size: 15rem;
+            font-weight: 700;
+            color: rgba(32, 227, 178, 0.1);
+            z-index: 2;
+            animation: float 6s ease-in-out infinite;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(-2deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        .error-container {
+            text-align: center;
+            max-width: 600px;
+            z-index: 3;
+            position: relative;
+            padding: var(--spacing-xl);
+        }
+
+        .error-icon {
+            font-size: 5rem;
+            margin-bottom: var(--spacing-md);
+            animation: bounce 2s infinite;
+            display: block;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .error-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .error-subtitle {
+            font-size: 1.8rem;
+            color: var(--accent-orange);
+            margin-bottom: var(--spacing-lg);
+            font-weight: 600;
+        }
+
+        .error-message {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: var(--spacing-xl);
+            line-height: 1.6;
+        }
+
+        .error-details {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+            border: 1px solid rgba(32, 227, 178, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .building-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .info-item {
+            text-align: left;
+        }
+
+        .info-label {
+            color: var(--accent-teal);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-value {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            margin-top: 0.25rem;
+        }
+
+        .fun-facts {
+            text-align: left;
+            margin-top: var(--spacing-lg);
+        }
+
+        .fun-facts h4 {
+            color: var(--accent-purple);
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.2rem;
+        }
+
+        .fun-facts ul {
+            list-style: none;
+            color: var(--text-muted);
+        }
+
+        .fun-facts li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .fun-facts li::before {
+            content: '🎓';
+            position: absolute;
+            left: 0;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: var(--spacing-md) var(--spacing-lg);
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: inherit;
+            position: relative;
+            overflow: hidden;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(32, 227, 178, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--accent-purple);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-purple);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3);
+        }
+
+        .easter-egg-hint {
+            position: fixed;
+            bottom: var(--spacing-lg);
+            right: var(--spacing-lg);
+            background: rgba(15, 20, 27, 0.9);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--accent-orange);
+            color: var(--accent-orange);
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            animation: pulse 2s ease-in-out infinite;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .easter-egg-hint:hover {
+            transform: scale(1.05);
+            border-color: var(--accent-teal);
+            color: var(--accent-teal);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        .secret-content {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--bg-card);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            border: 2px solid var(--accent-teal);
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .secret-content.show {
+            display: block;
+            animation: secretReveal 0.5s ease;
+        }
+
+        @keyframes secretReveal {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .close-secret {
+            position: absolute;
+            top: var(--spacing-sm);
+            right: var(--spacing-sm);
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .close-secret:hover {
+            color: var(--accent-orange);
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .floating-404 {
+                font-size: 8rem;
+            }
+
+            .error-container {
+                padding: var(--spacing-lg);
+            }
+
+            .building-info {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-sm);
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .easter-egg-hint {
+                position: relative;
+                margin-top: var(--spacing-lg);
+                align-self: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated background stars -->
+    <div class="stars" id="stars"></div>
+    
+    <!-- Floating 404 -->
+    <div class="floating-404">404</div>
+
+    <div class="error-container">
+        <div class="error-icon">🏗️</div>
+        
+        <h1 class="error-title">Secret Building Discovered!</h1>
+        <h2 class="error-subtitle">Congrats, Explorer!</h2>
+        
+        <p class="error-message">
+            You've found a secret building on the NUET campus... 
+            <br>Too bad it doesn't actually exist! 🎭
+        </p>
+
+        <div class="error-details">
+            <div class="building-info">
+                <div class="info-item">
+                    <div class="info-label">Building Code</div>
+                    <div class="info-value">404-NF</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Status</div>
+                    <div class="info-value">Non-Existent</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Floors</div>
+                    <div class="info-value">∞ (Theoretical)</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Departments</div>
+                    <div class="info-value">Quantum Physics of Lost Links</div>
+                </div>
+            </div>
+
+            <div class="fun-facts">
+                <h4>🔍 Discovery Facts:</h4>
+                <ul>
+                    <li>This building exists only in the quantum realm</li>
+                    <li>Students who find it get extra credit in "Advanced Web Navigation"</li>
+                    <li>The WiFi password is "404BuildingRocks"</li>
+                    <li>Coffee machine serves liquid motivation 24/7</li>
+                    <li>All exams here are automatically passed</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <a href="index.html" class="btn btn-primary">
+                🏠 Return to Reality
+            </a>
+            <button class="btn btn-secondary" id="explore-btn">
+                🗺️ Explore More Secrets
+            </button>
+        </div>
+    </div>
+
+    <!-- Easter egg hint -->
+    <div class="easter-egg-hint" id="easter-egg-hint">
+        💡 Click me for a secret!
+    </div>
+
+    <!-- Secret content -->
+    <div class="secret-content" id="secret-content">
+        <button class="close-secret" id="close-secret">&times;</button>
+        <h3 style="color: var(--accent-teal); margin-bottom: 1rem;">🎉 You Found It!</h3>
+        <p style="margin-bottom: 1.5rem; color: var(--text-primary);">
+            Welcome to the most exclusive club at NUET: <br>
+            <strong>The 404 Explorers Society!</strong>
+        </p>
+        <div style="background: rgba(32, 227, 178, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+            <p style="color: var(--accent-teal); font-weight: 600;">Your Secret Member Benefits:</p>
+            <ul style="list-style: none; margin-top: 0.5rem; color: var(--text-muted);">
+                <li>🎓 Honorary degree in "Advanced Link Hunting"</li>
+                <li>☕ Lifetime free coffee in non-existent cafeterias</li>
+                <li>🎮 Access to quantum gaming lounges</li>
+                <li>🌟 Bragging rights in parallel dimensions</li>
+            </ul>
+        </div>
+        <p style="font-style: italic; color: var(--text-muted);">
+            "Not all who wander are lost... some just have really good navigation skills!" 
+            <br>- NUET Faculty of Fictional Philosophy
+        </p>
+    </div>
+
+    <script>
+        // Create animated stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const numStars = 50;
+            
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Random position
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                
+                // Random size
+                const size = Math.random() * 3 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                
+                // Random animation delay
+                star.style.animationDelay = Math.random() * 4 + 's';
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Easter egg functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            
+            const easterEggHint = document.getElementById('easter-egg-hint');
+            const secretContent = document.getElementById('secret-content');
+            const closeSecret = document.getElementById('close-secret');
+            const exploreBtn = document.getElementById('explore-btn');
+            
+            // Show secret content
+            easterEggHint.addEventListener('click', () => {
+                secretContent.classList.add('show');
+                easterEggHint.style.display = 'none';
+                
+                // Trigger confetti
+                createConfetti();
+            });
+            
+            // Close secret content
+            closeSecret.addEventListener('click', () => {
+                secretContent.classList.remove('show');
+                easterEggHint.style.display = 'block';
+            });
+            
+            // Explore button with random messages
+            exploreBtn.addEventListener('click', () => {
+                const messages = [
+                    "🕵️ Scanning for more hidden pages... None found!",
+                    "🔍 Checking parallel universes... Still searching!",
+                    "🗺️ Consulting quantum maps... Results inconclusive!",
+                    "🎯 Activating secret page detector... Beep beep!",
+                    "🧭 Following breadcrumbs... They led to the cafeteria!",
+                    "🚪 Trying secret doors... Most are just walls!",
+                    "🔮 Asking fortune teller... Says 'Page unclear, try again'!"
+                ];
+                
+                const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                showNotification(randomMessage);
+            });
+            
+            // Konami code for extra fun
+            let konamiCode = [];
+            const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+            
+            document.addEventListener('keydown', (e) => {
+                konamiCode.push(e.code);
+                
+                if (konamiCode.length > 10) {
+                    konamiCode.shift();
+                }
+                
+                if (konamiCode.join(',') === konamiSequence.join(',')) {
+                    activatePartyMode();
+                    konamiCode = [];
+                }
+            });
+            
+            // Random floating elements
+            setTimeout(createFloatingElements, 2000);
+        });
+
+        function createConfetti() {
+            const colors = ['#20E3B2', '#8B5CF6', '#FF6B6B', '#FFD93D'];
+            const confettiCount = 50;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.cssText = `
+                    position: fixed;
+                    width: 10px;
+                    height: 10px;
+                    background: ${colors[Math.floor(Math.random() * colors.length)]};
+                    left: ${Math.random() * 100}%;
+                    top: -10px;
+                    z-index: 9999;
+                    border-radius: 50%;
+                    animation: confettiFall ${Math.random() * 2 + 3}s linear forwards;
+                    transform: rotate(${Math.random() * 360}deg);
+                `;
+                
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => {
+                    if (confetti.parentNode) {
+                        confetti.remove();
+                    }
+                }, 5000);
+            }
+        }
+
+        function activatePartyMode() {
+            document.body.style.animation = 'rainbow 0.5s infinite';
+            showNotification('🎉 PARTY MODE ACTIVATED! Welcome to the 404 Dance Floor!');
+            
+            // Create disco lights
+            const discoLights = document.createElement('div');
+            discoLights.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 500;
+                background: 
+                    radial-gradient(circle at 20% 80%, rgba(255, 0, 255, 0.3) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.3) 0%, transparent 50%),
+                    radial-gradient(circle at 40% 40%, rgba(255, 255, 0, 0.3) 0%, transparent 50%);
+                animation: discoLights 0.5s infinite alternate;
+            `;
+            
+            document.body.appendChild(discoLights);
+            createConfetti();
+            
+            setTimeout(() => {
+                document.body.style.animation = '';
+                if (discoLights.parentNode) {
+                    discoLights.remove();
+                }
+                showNotification('🕺 Party mode deactivated. Thanks for dancing!');
+            }, 8000);
+        }
+
+        function createFloatingElements() {
+            const emojis = ['🎓', '📚', '☕', '💻', '🎮', '🍕', '🎭', '🎸'];
+            
+            setInterval(() => {
+                if (Math.random() < 0.1) { // 10% chance every interval
+                    const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+                    const floatingEmoji = document.createElement('div');
+                    
+                    floatingEmoji.textContent = emoji;
+                    floatingEmoji.style.cssText = `
+                        position: fixed;
+                        font-size: 2rem;
+                        left: ${Math.random() * 90}%;
+                        top: 100%;
+                        z-index: 100;
+                        pointer-events: none;
+                        animation: floatUp 8s linear forwards;
+                        opacity: 0.7;
+                    `;
+                    
+                    document.body.appendChild(floatingEmoji);
+                    
+                    setTimeout(() => {
+                        if (floatingEmoji.parentNode) {
+                            floatingEmoji.remove();
+                        }
+                    }, 8000);
+                }
+            }, 2000);
+        }
+
+        function showNotification(message) {
+            // Remove existing notification
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: linear-gradient(135deg, #8B5CF6, #20E3B2);
+                color: white;
+                padding: 16px 24px;
+                border-radius: 12px;
+                font-weight: 600;
+                z-index: 9999;
+                max-width: 80%;
+                text-align: center;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+                animation: slideDown 0.3s ease;
+                cursor: pointer;
+                backdrop-filter: blur(10px);
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Auto remove after 4 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.style.animation = 'slideUp 0.3s ease forwards';
+                    setTimeout(() => {
+                        if (notification.parentNode) {
+                            notification.remove();
+                        }
+                    }, 300);
+                }
+            }, 4000);
+            
+            // Click to dismiss
+            notification.addEventListener('click', () => {
+                notification.style.animation = 'slideUp 0.3s ease forwards';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 300);
+            });
+        }
+
+        // Add CSS animations dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes confettiFall {
+                to {
+                    top: 100vh;
+                    transform: rotate(720deg);
+                }
+            }
+            
+            @keyframes discoLights {
+                0% { filter: hue-rotate(0deg); }
+                100% { filter: hue-rotate(90deg); }
+            }
+            
+            @keyframes rainbow {
+                0% { filter: hue-rotate(0deg); }
+                100% { filter: hue-rotate(360deg); }
+            }
+            
+            @keyframes floatUp {
+                0% {
+                    top: 100%;
+                    transform: translateX(0);
+                }
+                100% {
+                    top: -10%;
+                    transform: translateX(${Math.random() * 200 - 100}px);
+                }
+            }
+            
+            @keyframes slideDown {
+                from {
+                    top: -100px;
+                    opacity: 0;
+                }
+                to {
+                    top: 20px;
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes slideUp {
+                from {
+                    top: 20px;
+                    opacity: 1;
+                }
+                to {
+                    top: -100px;
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Console message for developers
+        console.log(`
+            🎉 Congratulations! You found the secret 404 page!
+            
+            🕵️ Secret Developer Commands:
+            - Type "nuet404.partyMode()" for instant disco!
+            - Type "nuet404.confetti()" for celebration!
+            - Type "nuet404.floatEmojis()" for floating fun!
+            
+            Happy exploring! 🚀
+        `);
+
+        // Make functions available in console
+        window.nuet404 = {
+            partyMode: () => activatePartyMode(),
+            confetti: () => createConfetti(),
+            floatEmojis: () => createFloatingElements()
+        };
+    </script>
+</body>
+</html>
