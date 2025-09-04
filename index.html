@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUET - Where Degrees Are Optional, Humour Is Mandatory</title>
+    <meta name="description" content="Nigatola University of Engineering & Technology - The most prestigious university you'll never find on a map.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p id="loading-text">Compiling jokes... please don't close browser</p>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo" id="logo">
+                <span class="logo-text">NUET</span>
+                <span class="logo-sunglasses">😎</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#departments" class="nav-link">Departments</a>
+                <a href="#campus-life" class="nav-link">Campus Life</a>
+                <a href="#admissions" class="nav-link">Admissions</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <button class="cta-button" id="apply-btn">
+                    Apply*
+                    <span class="cta-footnote">*Terms & vibes apply</span>
+                </button>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="gradient-text">NUET:</span> Where Degrees Are Optional,<br>
+                    <span class="highlight">Humour Is Mandatory</span>
+                </h1>
+                <p class="hero-subtitle">The most prestigious university you'll never find on a map.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('departments')">
+                        Explore Departments
+                    </button>
+                    <button class="btn btn-secondary" id="watch-reels-btn">
+                        Watch Our Reels
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Exam Countdown -->
+        <div class="exam-countdown">
+            <span>Next Exam: </span>
+            <span id="countdown">00:00:00 – Time's Up!</span>
+        </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section id="departments" class="departments">
+        <div class="container">
+            <h2 class="section-title">Our Legendary Departments</h2>
+            <p class="section-subtitle">Where academic excellence meets creative procrastination</p>
+            <div class="departments-grid">
+                <div class="department-card" data-original="Meme Engineering" data-silly="Advanced Memeology & Digital Sarcasm">
+                    <div class="department-icon">🚀</div>
+                    <h3 class="department-name">Meme Engineering</h3>
+                    <p class="department-desc">Master the art of viral content creation and internet culture dynamics.</p>
+                    <div class="department-stats">
+                        <span>📊 98% Viral Rate</span>
+                        <span>⏱️ 2.5 sec Response Time</span>
+                    </div>
+                </div>
+                <div class="department-card" data-original="Chillonomics" data-silly="Strategic Relaxation & Stress Avoidance">
+                    <div class="department-icon">🧘</div>
+                    <h3 class="department-name">Chillonomics</h3>
+                    <p class="department-desc">Study the economic principles of maximum comfort with minimum effort.</p>
+                    <div class="department-stats">
+                        <span>📈 0% Stress Level</span>
+                        <span>🛋️ 24/7 Sofa Access</span>
+                    </div>
+                </div>
+                <div class="department-card" data-original="Procrastination Science" data-silly="Tomorrow Studies & Deadline Dodging">
+                    <div class="department-icon">⏰</div>
+                    <h3 class="department-name">Procrastination Science</h3>
+                    <p class="department-desc">Perfect the delicate balance between 'I'll do it later' and actually doing it.</p>
+                    <div class="department-stats">
+                        <span>⏳ ∞ Extension Requests</span>
+                        <span>📅 Always Tomorrow</span>
+                    </div>
+                </div>
+                <div class="department-card" data-original="Advanced Banter Studies" data-silly="Professional Roasting & Comeback Engineering">
+                    <div class="department-icon">🎭</div>
+                    <h3 class="department-name">Advanced Banter Studies</h3>
+                    <p class="department-desc">Develop razor-sharp wit and master the ancient art of friendly roasting.</p>
+                    <div class="department-stats">
+                        <span>🔥 Legendary Burns</span>
+                        <span>🎯 99% Hit Rate</span>
+                    </div>
+                </div>
+                <div class="department-card" data-original="Applied Tea & Biscuits" data-silly="Caffeinated Solutions & Cookie Physics">
+                    <div class="department-icon">☕</div>
+                    <h3 class="department-name">Applied Tea & Biscuits</h3>
+                    <p class="department-desc">Explore the scientific relationship between hot beverages and productivity.</p>
+                    <div class="department-stats">
+                        <span>🍪 Perfect Dunk Ratio</span>
+                        <span>☕ Infinite Refills</span>
+                    </div>
+                </div>
+                <div class="department-card" data-original="Netflix Studies" data-silly="Binge-Watching Optimization & Series Analysis">
+                    <div class="department-icon">📺</div>
+                    <h3 class="department-name">Netflix Studies</h3>
+                    <p class="department-desc">Advanced techniques in series completion and optimal viewing schedules.</p>
+                    <div class="department-stats">
+                        <span>📺 24/7 Streaming</span>
+                        <span>🍿 Snack Science</span>
+                    </div>
+                </div>
+            </div>
+            <div class="syllabus-generator">
+                <button class="btn btn-outline" id="syllabus-btn">Random Syllabus Generator</button>
+                <div id="syllabus-output" class="syllabus-output hidden"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" data-count="42069">0</div>
+                    <div class="stat-label">Lectures Survived</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="999999">0</div>
+                    <div class="stat-label">Tea Cups Brewed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="1337">0</div>
+                    <div class="stat-label">Memes Published</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="100">0</div>
+                    <div class="stat-label">Departments with Sofas</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campus Life Section -->
+    <section id="campus-life" class="campus-life">
+        <div class="container">
+            <h2 class="section-title">Campus Life Highlights</h2>
+            <p class="section-subtitle">Where memories are made and deadlines are forgotten</p>
+            <div class="media-grid">
+                <div class="media-card">
+                    <div class="media-placeholder">
+                        <span class="media-icon">📚</span>
+                    </div>
+                    <div class="media-caption">
+                        <h4>Lecture 0: Surviving Mondays</h4>
+                        <p>Essential survival skills for the most dangerous day of the week</p>
+                    </div>
+                </div>
+                <div class="media-card">
+                    <div class="media-placeholder">
+                        <span class="media-icon">🏓</span>
+                    </div>
+                    <div class="media-caption">
+                        <h4>Championship Ping Pong Tournament</h4>
+                        <p>Where legends are born and paddles are broken</p>
+                    </div>
+                </div>
+                <div class="media-card">
+                    <div class="media-placeholder">
+                        <span class="media-icon">🍕</span>
+                    </div>
+                    <div class="media-caption">
+                        <h4>3AM Cafeteria Adventures</h4>
+                        <p>The mysterious world of late-night academic nutrition</p>
+                    </div>
+                </div>
+                <div class="media-card">
+                    <div class="media-placeholder">
+                        <span class="media-icon">🎮</span>
+                    </div>
+                    <div class="media-caption">
+                        <h4>Gaming Club Championships</h4>
+                        <p>Where academic stress meets competitive gaming therapy</p>
+                    </div>
+                </div>
+                <div class="media-card">
+                    <div class="media-placeholder">
+                        <span class="media-icon">🎭</span>
+                    </div>
+                    <div class="media-caption">
+                        <h4>Annual Comedy Night</h4>
+                        <p>Students roasting professors (and surviving)</p>
+                    </div>
+                </div>
+                <div class="media-card">
+                    <div class="media-placeholder">
+                        <span class="media-icon">🛌</span>
+                    </div>
+                    <div class="media-caption">
+                        <h4>Strategic Napping Locations</h4>
+                        <p>A comprehensive guide to campus sleeping spots</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Alumni Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">🧑‍💼</div>
+                    <blockquote class="testimonial-quote">
+                        "NUET taught me the science of strategic napping. Now I'm a productivity consultant earning 6 figures while working 2 hours a day."
+                    </blockquote>
+                    <cite class="testimonial-author">
+                        <strong>Alex Chillstein</strong>
+                        <span>CEO of DoLater Inc.</span>
+                    </cite>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">👩‍🎨</div>
+                    <blockquote class="testimonial-quote">
+                        "My degree in Meme Engineering landed me a dream job at a tech startup. Who knew shitposting could be so lucrative?"
+                    </blockquote>
+                    <cite class="testimonial-author">
+                        <strong>Sarah Memesworth</strong>
+                        <span>Chief Meme Officer at ViralTech</span>
+                    </cite>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">🧑‍🏫</div>
+                    <blockquote class="testimonial-quote">
+                        "Thanks to Advanced Banter Studies, I can now professionally roast anyone while maintaining complete professionalism. 10/10 would recommend."
+                    </blockquote>
+                    <cite class="testimonial-author">
+                        <strong>Dr. Roast McBurnface</strong>
+                        <span>Professional Roaster & Life Coach</span>
+                    </cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions Section -->
+    <section id="admissions" class="admissions">
+        <div class="container">
+            <h2 class="section-title">Apply the NUET Way</h2>
+            <p class="section-subtitle">Because traditional applications are so last century</p>
+            <div class="admissions-content">
+                <div class="admissions-points">
+                    <ul class="points-list">
+                        <li>✨ No personal statements, only punchlines</li>
+                        <li>🎭 Portfolio of your best roasts (family-friendly)</li>
+                        <li>☕ Demonstrate proper tea-to-productivity ratio</li>
+                        <li>🎯 Submit your most legendary meme collection</li>
+                        <li>🛌 Prove your strategic napping abilities</li>
+                        <li>🎮 Show us your procrastination high scores</li>
+                    </ul>
+                </div>
+                <div class="admissions-cta">
+                    <button class="btn btn-primary btn-large" id="application-btn">
+                        Start Your Journey
+                    </button>
+                    <p class="admissions-note">*No actual degrees will be awarded, but lifelong friendships guaranteed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>NUET</h3>
+                    <p>Where education meets entertainment</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#departments">Departments</a></li>
+                            <li><a href="#campus-life">Campus Life</a></li>
+                            <li><a href="#admissions">Admissions</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="https://www.facebook.com/nigatolauniversityofengineeringandtechnologyNUET" target="_blank">Facebook</a></li>
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">Twitter</a></li>
+                            <li><a href="#">TikTok</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Info</h4>
+                        <ul>
+                            <li><a href="#faq">FAQ</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="404.html">Secret Page</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NUET. All rights reserved. <span class="footer-disclaimer">NUET is a parody project. Don't actually drop out.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Application Modal -->
+    <div id="application-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h3>NUET Application Form</h3>
+            <form id="application-form">
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="funny-reason">Why are you hilarious?</label>
+                    <textarea id="funny-reason" name="funny-reason" rows="4" placeholder="Convince us with your wit..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="best-meme">Link to your best meme:</label>
+                    <input type="url" id="best-meme" name="best-meme" placeholder="https://...">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Disco Mode Elements -->
+    <div id="disco-lights" class="disco-lights hidden"></div>
+    <canvas id="confetti-canvas" class="confetti-canvas"></canvas>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
