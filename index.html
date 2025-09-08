@@ -3,42 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NUET - Where Degrees Are Optional, Humour Is Mandatory</title>
-    <meta name="description" content="Nigatola University of Engineering & Technology - The most prestigious university you'll never find on a map.">
+    <title>Nigatola University of Engineering & Technology (NUET)</title>
+    <meta name="description" content="Where Degrees Are Optional, Humour Is Mandatory - NUET Official Website">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
         <div class="loading-content">
-            <div class="loading-spinner"></div>
-            <p id="loading-text">Compiling jokes... please don't close browser</p>
+            <div class="university-name">
+                <h1>Nigatola University of Engineering and Technology</h1>
+                <div class="nuet-logo">
+                    <span class="letter">N</span>
+                    <span class="letter">U</span>
+                    <span class="letter">E</span>
+                    <span class="letter">T</span>
+                </div>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <p class="loading-text">Compiling jokes... please don't close browser</p>
         </div>
     </div>
 
-    <!-- Navbar -->
-    <nav class="navbar">
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <div class="nav-logo" id="logo">
+            <div class="nav-logo" id="nav-logo">
                 <span class="logo-text">NUET</span>
-                <span class="logo-sunglasses">😎</span>
+                <div class="sunglasses" id="sunglasses">🕶️</div>
             </div>
             <div class="nav-menu" id="nav-menu">
                 <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
                 <a href="#departments" class="nav-link">Departments</a>
-                <a href="#campus-life" class="nav-link">Campus Life</a>
-                <a href="#admissions" class="nav-link">Admissions</a>
-                <a href="#faq" class="nav-link">FAQ</a>
-                <button class="cta-button" id="apply-btn">
-                    Apply*
-                    <span class="cta-footnote">*Terms & vibes apply</span>
-                </button>
+                <a href="#research" class="nav-link">Research</a>
+                <a href="#admission" class="nav-link">Admission</a>
+                <a href="#events" class="nav-link">Events</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
-            <div class="nav-toggle" id="nav-toggle">
+            <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -46,328 +54,468 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-bg"></div>
-        <div class="container">
+    <!-- Floating Background Elements -->
+    <div class="floating-elements">
+        <div class="floating-blob blob-1"></div>
+        <div class="floating-blob blob-2"></div>
+        <div class="floating-blob blob-3"></div>
+        <div class="floating-blob blob-4"></div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
             <div class="hero-content">
-                <h1 class="hero-title">
-                    <span class="gradient-text">NUET:</span> Where Degrees Are Optional,<br>
-                    <span class="highlight">Humour Is Mandatory</span>
-                </h1>
-                <p class="hero-subtitle">The most prestigious university you'll never find on a map.</p>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary" onclick="scrollToSection('departments')">
-                        Explore Departments
-                    </button>
-                    <button class="btn btn-secondary" id="watch-reels-btn">
-                        Watch Our Reels
-                    </button>
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Nigatola University of Engineering and Technology 
+                        <span class="nuet-animate">
+                            <span class="letter">N</span>
+                            <span class="letter">U</span>
+                            <span class="letter">E</span>
+                            <span class="letter">T</span>
+                        </span>
+                    </h1>
+                    <p class="hero-subtitle">Where Degrees Are Optional, Humour Is Mandatory</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="scrollToSection('departments')">Explore Departments</button>
+                        <button class="btn btn-secondary" onclick="generateSyllabus()">Watch Our Reels</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Exam Countdown -->
-        <div class="exam-countdown">
-            <span>Next Exam: </span>
-            <span id="countdown">00:00:00 – Time's Up!</span>
-        </div>
-    </section>
+            <div class="scroll-indicator">
+                <span>Scroll Down</span>
+                <div class="scroll-arrow">↓</div>
+            </div>
+        </section>
 
-    <!-- Departments Section -->
-    <section id="departments" class="departments">
-        <div class="container">
-            <h2 class="section-title">Our Legendary Departments</h2>
-            <p class="section-subtitle">Where academic excellence meets creative procrastination</p>
-            <div class="departments-grid">
-                <div class="department-card" data-original="Meme Engineering" data-silly="Advanced Memeology & Digital Sarcasm">
-                    <div class="department-icon">🚀</div>
-                    <h3 class="department-name">Meme Engineering</h3>
-                    <p class="department-desc">Master the art of viral content creation and internet culture dynamics.</p>
-                    <div class="department-stats">
-                        <span>📊 98% Viral Rate</span>
-                        <span>⏱️ 2.5 sec Response Time</span>
-                    </div>
-                </div>
-                <div class="department-card" data-original="Chillonomics" data-silly="Strategic Relaxation & Stress Avoidance">
-                    <div class="department-icon">🧘</div>
-                    <h3 class="department-name">Chillonomics</h3>
-                    <p class="department-desc">Study the economic principles of maximum comfort with minimum effort.</p>
-                    <div class="department-stats">
-                        <span>📈 0% Stress Level</span>
-                        <span>🛋️ 24/7 Sofa Access</span>
-                    </div>
-                </div>
-                <div class="department-card" data-original="Procrastination Science" data-silly="Tomorrow Studies & Deadline Dodging">
-                    <div class="department-icon">⏰</div>
-                    <h3 class="department-name">Procrastination Science</h3>
-                    <p class="department-desc">Perfect the delicate balance between 'I'll do it later' and actually doing it.</p>
-                    <div class="department-stats">
-                        <span>⏳ ∞ Extension Requests</span>
-                        <span>📅 Always Tomorrow</span>
-                    </div>
-                </div>
-                <div class="department-card" data-original="Advanced Banter Studies" data-silly="Professional Roasting & Comeback Engineering">
-                    <div class="department-icon">🎭</div>
-                    <h3 class="department-name">Advanced Banter Studies</h3>
-                    <p class="department-desc">Develop razor-sharp wit and master the ancient art of friendly roasting.</p>
-                    <div class="department-stats">
-                        <span>🔥 Legendary Burns</span>
-                        <span>🎯 99% Hit Rate</span>
-                    </div>
-                </div>
-                <div class="department-card" data-original="Applied Tea & Biscuits" data-silly="Caffeinated Solutions & Cookie Physics">
-                    <div class="department-icon">☕</div>
-                    <h3 class="department-name">Applied Tea & Biscuits</h3>
-                    <p class="department-desc">Explore the scientific relationship between hot beverages and productivity.</p>
-                    <div class="department-stats">
-                        <span>🍪 Perfect Dunk Ratio</span>
-                        <span>☕ Infinite Refills</span>
-                    </div>
-                </div>
-                <div class="department-card" data-original="Netflix Studies" data-silly="Binge-Watching Optimization & Series Analysis">
-                    <div class="department-icon">📺</div>
-                    <h3 class="department-name">Netflix Studies</h3>
-                    <p class="department-desc">Advanced techniques in series completion and optimal viewing schedules.</p>
-                    <div class="department-stats">
-                        <span>📺 24/7 Streaming</span>
-                        <span>🍿 Snack Science</span>
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="glass-panel">
+                    <h2 class="section-title">About NUET</h2>
+                    <div class="about-grid">
+                        <div class="about-text">
+                            <p>Founded in the mythical year of 2024, Nigatola University of Engineering and Technology stands as a beacon of innovative education where traditional learning meets modern procrastination techniques.</p>
+                            <p>Our state-of-the-art campus features cutting-edge nap pods, advanced meme laboratories, and the world's first Department of Strategic Procrastination.</p>
+                        </div>
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" data-target="1337">0</span>
+                                <span class="stat-label">Legends Graduated</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" data-target="9001">0</span>
+                                <span class="stat-label">Memes Created</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" data-target="42">0</span>
+                                <span class="stat-label">Departments with Sofas</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="syllabus-generator">
-                <button class="btn btn-outline" id="syllabus-btn">Random Syllabus Generator</button>
-                <div id="syllabus-output" class="syllabus-output hidden"></div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number" data-count="42069">0</div>
-                    <div class="stat-label">Lectures Survived</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" data-count="999999">0</div>
-                    <div class="stat-label">Tea Cups Brewed</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" data-count="1337">0</div>
-                    <div class="stat-label">Memes Published</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" data-count="100">0</div>
-                    <div class="stat-label">Departments with Sofas</div>
+        <!-- Departments Section -->
+        <section id="departments" class="departments">
+            <div class="container">
+                <h2 class="section-title">Our Departments</h2>
+                <div class="departments-grid">
+                    <div class="department-card">
+                        <div class="card-icon">🧪</div>
+                        <h3>Meme Engineering</h3>
+                        <p>Advanced study of viral content creation, joke optimization, and comedy algorithms. Prerequisites: Sense of humor (optional).</p>
+                        <div class="card-footer">
+                            <span class="badge">4 Years</span>
+                            <span class="badge">BSc</span>
+                        </div>
+                    </div>
+                    <div class="department-card">
+                        <div class="card-icon">💰</div>
+                        <h3>Chillonomics</h3>
+                        <p>Economics of relaxation, market analysis of comfort zones, and the supply-demand dynamics of weekend vibes.</p>
+                        <div class="card-footer">
+                            <span class="badge">3 Years</span>
+                            <span class="badge">BA</span>
+                        </div>
+                    </div>
+                    <div class="department-card">
+                        <div class="card-icon">⏰</div>
+                        <h3>Procrastination Science</h3>
+                        <p>Scientific approach to deadline management, optimal delay strategies, and the art of "I'll do it tomorrow".</p>
+                        <div class="card-footer">
+                            <span class="badge">5 Years</span>
+                            <span class="badge">PhD</span>
+                        </div>
+                    </div>
+                    <div class="department-card">
+                        <div class="card-icon">💬</div>
+                        <h3>Banter Studies</h3>
+                        <p>Academic research into witty conversations, roast methodologies, and professional-level friendly banter techniques.</p>
+                        <div class="card-footer">
+                            <span class="badge">2 Years</span>
+                            <span class="badge">Diploma</span>
+                        </div>
+                    </div>
+                    <div class="department-card">
+                        <div class="card-icon">☕</div>
+                        <h3>Tea & Biscuit Applications</h3>
+                        <p>Engineering the perfect brew, biscuit dunking physics, and applications in workplace productivity enhancement.</p>
+                        <div class="card-footer">
+                            <span class="badge">1 Year</span>
+                            <span class="badge">Certificate</span>
+                        </div>
+                    </div>
+                    <div class="department-card">
+                        <div class="card-icon">🛏️</div>
+                        <h3>Advanced Napping</h3>
+                        <p>Power nap optimization, sleep scheduling, and the theoretical framework of "5 more minutes".</p>
+                        <div class="card-footer">
+                            <span class="badge">Ongoing</span>
+                            <span class="badge">Masters</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Campus Life Section -->
-    <section id="campus-life" class="campus-life">
-        <div class="container">
-            <h2 class="section-title">Campus Life Highlights</h2>
-            <p class="section-subtitle">Where memories are made and deadlines are forgotten</p>
-            <div class="media-grid">
-                <div class="media-card">
-                    <div class="media-placeholder">
-                        <span class="media-icon">📚</span>
+        <!-- Research Section -->
+        <section id="research" class="research">
+            <div class="container">
+                <h2 class="section-title">Research Highlights</h2>
+                <div class="research-grid">
+                    <div class="glass-panel research-stats">
+                        <h3>Research Statistics</h3>
+                        <div class="stat-chart">
+                            <div class="chart-item">
+                                <span class="chart-label">Papers Published</span>
+                                <div class="chart-bar">
+                                    <div class="chart-progress" data-percent="0"></div>
+                                </div>
+                                <span class="chart-value">404 (Not Found)</span>
+                            </div>
+                            <div class="chart-item">
+                                <span class="chart-label">Coffee Consumed (L)</span>
+                                <div class="chart-bar">
+                                    <div class="chart-progress" data-percent="95"></div>
+                                </div>
+                                <span class="chart-value">9,001</span>
+                            </div>
+                            <div class="chart-item">
+                                <span class="chart-label">Deadlines Missed</span>
+                                <div class="chart-bar">
+                                    <div class="chart-progress" data-percent="100"></div>
+                                </div>
+                                <span class="chart-value">∞</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="media-caption">
-                        <h4>Lecture 0: Surviving Mondays</h4>
-                        <p>Essential survival skills for the most dangerous day of the week</p>
-                    </div>
-                </div>
-                <div class="media-card">
-                    <div class="media-placeholder">
-                        <span class="media-icon">🏓</span>
-                    </div>
-                    <div class="media-caption">
-                        <h4>Championship Ping Pong Tournament</h4>
-                        <p>Where legends are born and paddles are broken</p>
-                    </div>
-                </div>
-                <div class="media-card">
-                    <div class="media-placeholder">
-                        <span class="media-icon">🍕</span>
-                    </div>
-                    <div class="media-caption">
-                        <h4>3AM Cafeteria Adventures</h4>
-                        <p>The mysterious world of late-night academic nutrition</p>
-                    </div>
-                </div>
-                <div class="media-card">
-                    <div class="media-placeholder">
-                        <span class="media-icon">🎮</span>
-                    </div>
-                    <div class="media-caption">
-                        <h4>Gaming Club Championships</h4>
-                        <p>Where academic stress meets competitive gaming therapy</p>
-                    </div>
-                </div>
-                <div class="media-card">
-                    <div class="media-placeholder">
-                        <span class="media-icon">🎭</span>
-                    </div>
-                    <div class="media-caption">
-                        <h4>Annual Comedy Night</h4>
-                        <p>Students roasting professors (and surviving)</p>
-                    </div>
-                </div>
-                <div class="media-card">
-                    <div class="media-placeholder">
-                        <span class="media-icon">🛌</span>
-                    </div>
-                    <div class="media-caption">
-                        <h4>Strategic Napping Locations</h4>
-                        <p>A comprehensive guide to campus sleeping spots</p>
+                    <div class="glass-panel research-projects">
+                        <h3>Ongoing Projects</h3>
+                        <div class="project-list">
+                            <div class="project-item">
+                                <div class="project-icon">🔬</div>
+                                <div class="project-info">
+                                    <h4>The Science of Strategic Napping</h4>
+                                    <p>Investigating optimal nap durations for maximum productivity avoidance.</p>
+                                    <span class="project-status">In Progress (Since 2019)</span>
+                                </div>
+                            </div>
+                            <div class="project-item">
+                                <div class="project-icon">📱</div>
+                                <div class="project-info">
+                                    <h4>Meme Propagation Algorithms</h4>
+                                    <p>Mathematical modeling of viral content spread across social platforms.</p>
+                                    <span class="project-status">Pending Approval</span>
+                                </div>
+                            </div>
+                            <div class="project-item">
+                                <div class="project-icon">☕</div>
+                                <div class="project-info">
+                                    <h4>Caffeine Optimization Engine</h4>
+                                    <p>AI-powered system for perfect coffee-to-productivity ratios.</p>
+                                    <span class="project-status">Beta Testing</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <h2 class="section-title">What Our Alumni Say</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-avatar">🧑‍💼</div>
-                    <blockquote class="testimonial-quote">
-                        "NUET taught me the science of strategic napping. Now I'm a productivity consultant earning 6 figures while working 2 hours a day."
-                    </blockquote>
-                    <cite class="testimonial-author">
-                        <strong>Alex Chillstein</strong>
-                        <span>CEO of DoLater Inc.</span>
-                    </cite>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-avatar">👩‍🎨</div>
-                    <blockquote class="testimonial-quote">
-                        "My degree in Meme Engineering landed me a dream job at a tech startup. Who knew shitposting could be so lucrative?"
-                    </blockquote>
-                    <cite class="testimonial-author">
-                        <strong>Sarah Memesworth</strong>
-                        <span>Chief Meme Officer at ViralTech</span>
-                    </cite>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-avatar">🧑‍🏫</div>
-                    <blockquote class="testimonial-quote">
-                        "Thanks to Advanced Banter Studies, I can now professionally roast anyone while maintaining complete professionalism. 10/10 would recommend."
-                    </blockquote>
-                    <cite class="testimonial-author">
-                        <strong>Dr. Roast McBurnface</strong>
-                        <span>Professional Roaster & Life Coach</span>
-                    </cite>
+        <!-- Admission Section -->
+        <section id="admission" class="admission">
+            <div class="container">
+                <div class="glass-panel">
+                    <h2 class="section-title">Admission Information</h2>
+                    <div class="admission-content">
+                        <div class="admission-info">
+                            <h3>Entry Requirements</h3>
+                            <ul class="requirements-list">
+                                <li>✅ Ability to laugh at yourself</li>
+                                <li>✅ Basic understanding of internet culture</li>
+                                <li>✅ Willingness to question everything</li>
+                                <li>❌ Previous academic achievements (discouraged)</li>
+                                <li>❌ Serious attitude (strictly prohibited)</li>
+                            </ul>
+                        </div>
+                        <div class="admission-stats">
+                            <div class="exam-countdown">
+                                <h3>Next Exam In:</h3>
+                                <div class="countdown-display">
+                                    <span class="countdown-time">00:00:00</span>
+                                    <p>Time's Up! (As Always)</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" onclick="generateSyllabus()">Generate Random Syllabus</button>
+                            <div id="syllabus-output" class="syllabus-output"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Admissions Section -->
-    <section id="admissions" class="admissions">
-        <div class="container">
-            <h2 class="section-title">Apply the NUET Way</h2>
-            <p class="section-subtitle">Because traditional applications are so last century</p>
-            <div class="admissions-content">
-                <div class="admissions-points">
-                    <ul class="points-list">
-                        <li>✨ No personal statements, only punchlines</li>
-                        <li>🎭 Portfolio of your best roasts (family-friendly)</li>
-                        <li>☕ Demonstrate proper tea-to-productivity ratio</li>
-                        <li>🎯 Submit your most legendary meme collection</li>
-                        <li>🛌 Prove your strategic napping abilities</li>
-                        <li>🎮 Show us your procrastination high scores</li>
-                    </ul>
-                </div>
-                <div class="admissions-cta">
-                    <button class="btn btn-primary btn-large" id="application-btn">
-                        Start Your Journey
-                    </button>
-                    <p class="admissions-note">*No actual degrees will be awarded, but lifelong friendships guaranteed</p>
+        <!-- Events Section -->
+        <section id="events" class="events">
+            <div class="container">
+                <h2 class="section-title">Events & Calendar</h2>
+                <div class="events-grid">
+                    <div class="glass-panel calendar-widget">
+                        <h3>Upcoming Events</h3>
+                        <div class="calendar">
+                            <div class="calendar-header">
+                                <button class="calendar-nav" onclick="changeMonth(-1)">‹</button>
+                                <span id="current-month">September 2025</span>
+                                <button class="calendar-nav" onclick="changeMonth(1)">›</button>
+                            </div>
+                            <div class="calendar-grid" id="calendar-grid">
+                                <!-- Calendar will be generated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-panel events-list">
+                        <h3>Featured Events</h3>
+                        <div class="event-items">
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <span class="event-day">15</span>
+                                    <span class="event-month">Sep</span>
+                                </div>
+                                <div class="event-info">
+                                    <h4>Annual Meme Olympiad 2025</h4>
+                                    <p>Competitive meme creation, judged by our AI overlords.</p>
+                                    <span class="event-location">Virtual Reality Lab</span>
+                                </div>
+                            </div>
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <span class="event-day">22</span>
+                                    <span class="event-month">Sep</span>
+                                </div>
+                                <div class="event-info">
+                                    <h4>Procrastination Workshop</h4>
+                                    <p>Learn advanced techniques in deadline avoidance. (Postponed indefinitely)</p>
+                                    <span class="event-location">Wherever</span>
+                                </div>
+                            </div>
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <span class="event-day">30</span>
+                                    <span class="event-month">Sep</span>
+                                </div>
+                                <div class="event-info">
+                                    <h4>Tea & Biscuit Symposium</h4>
+                                    <p>Scientific discourse on optimal dunking methodologies.</p>
+                                    <span class="event-location">Faculty Lounge</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Campus Life Section -->
+        <section class="campus-life">
+            <div class="container">
+                <h2 class="section-title">Campus Life</h2>
+                <div class="media-grid">
+                    <div class="media-item">
+                        <div class="media-placeholder">📚</div>
+                        <div class="media-caption">Lecture 0: Surviving Mondays</div>
+                    </div>
+                    <div class="media-item">
+                        <div class="media-placeholder">☕</div>
+                        <div class="media-caption">The Sacred Coffee Ritual</div>
+                    </div>
+                    <div class="media-item">
+                        <div class="media-placeholder">🏛️</div>
+                        <div class="media-caption">Main Building (Mostly Intact)</div>
+                    </div>
+                    <div class="media-item">
+                        <div class="media-placeholder">🎓</div>
+                        <div class="media-caption">Graduation Day Shenanigans</div>
+                    </div>
+                    <div class="media-item">
+                        <div class="media-placeholder">🍕</div>
+                        <div class="media-caption">Cafeteria's Legendary Pizza</div>
+                    </div>
+                    <div class="media-item">
+                        <div class="media-placeholder">🎮</div>
+                        <div class="media-caption">Research Break Activities</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <div class="container">
+                <h2 class="section-title">What Our Alumni Say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">👨‍💻</div>
+                        <div class="testimonial-content">
+                            <p>"NUET taught me the science of strategic napping. I now manage a team of 50 while getting 12 hours of sleep daily."</p>
+                            <div class="testimonial-author">
+                                <h4>Ahmad Rahman</h4>
+                                <span>CEO, SleepTech Solutions</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">👩‍🎨</div>
+                        <div class="testimonial-content">
+                            <p>"The Meme Engineering program changed my life. My TikToks now get 10M+ views and I've revolutionized internet humor."</p>
+                            <div class="testimonial-author">
+                                <h4>Fatima Khan</h4>
+                                <span>Viral Content Creator</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">👨‍🍳</div>
+                        <div class="testimonial-content">
+                            <p>"Tea & Biscuit Applications taught me precision. I now run the most successful chai stall in the city. Perfect dunking every time!"</p>
+                            <div class="testimonial-author">
+                                <h4>Karim Ahmed</h4>
+                                <span>Chai Entrepreneur</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="glass-panel">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <div class="contact-grid">
+                        <div class="contact-info">
+                            <h3>Visit Our Campus</h3>
+                            <div class="contact-item">
+                                <span class="contact-icon">📍</span>
+                                <div>
+                                    <strong>Address:</strong><br>
+                                    Nigatola, Dhaka, Bangladesh<br>
+                                    (GPS coordinates: 23.8103° N, 90.4125° E)
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">📞</span>
+                                <div>
+                                    <strong>Phone:</strong><br>
+                                    +880-1234-567890
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">✉️</span>
+                                <div>
+                                    <strong>Email:</strong><br>
+                                    admissions@nuet.edu.bd
+                                </div>
+                            </div>
+                        </div>
+                        <div class="newsletter-signup">
+                            <h3>Subscribe to Our Newsletter</h3>
+                            <p>Get weekly updates on new memes, research breakthroughs, and nap techniques.</p>
+                            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                                <input type="email" placeholder="Enter your email" required>
+                                <button type="submit" class="btn btn-primary">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>NUET</h3>
-                    <p>Where education meets entertainment</p>
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <span class="logo-text">NUET</span>
+                    </div>
+                    <p>Where Degrees Are Optional, Humour Is Mandatory</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/nigatolauniversityofengineeringandtechnologyNUET" target="_blank" title="Facebook">📘</a>
+                        <a href="#" title="Twitter">🐦</a>
+                        <a href="#" title="Instagram">📷</a>
+                        <a href="#" title="LinkedIn">💼</a>
+                        <a href="#" title="YouTube">📺</a>
+                    </div>
                 </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Quick Links</h4>
-                        <ul>
-                            <li><a href="#home">Home</a></li>
-                            <li><a href="#departments">Departments</a></li>
-                            <li><a href="#campus-life">Campus Life</a></li>
-                            <li><a href="#admissions">Admissions</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Connect</h4>
-                        <ul>
-                            <li><a href="https://www.facebook.com/nigatolauniversityofengineeringandtechnologyNUET" target="_blank">Facebook</a></li>
-                            <li><a href="#">Instagram</a></li>
-                            <li><a href="#">Twitter</a></li>
-                            <li><a href="#">TikTok</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Info</h4>
-                        <ul>
-                            <li><a href="#faq">FAQ</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="404.html">Secret Page</a></li>
-                        </ul>
-                    </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#departments">Departments</a></li>
+                        <li><a href="#admission">Admissions</a></li>
+                        <li><a href="#events">Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Student Life</h4>
+                    <ul>
+                        <li><a href="#">Campus Tours</a></li>
+                        <li><a href="#">Nap Pods</a></li>
+                        <li><a href="#">Meme Labs</a></li>
+                        <li><a href="#">Tea Gardens</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Library (Under Construction)</a></li>
+                        <li><a href="#">Career Center</a></li>
+                        <li><a href="#">Mental Health Support</a></li>
+                        <li><a href="#">404 Help</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 NUET. All rights reserved. <span class="footer-disclaimer">NUET is a parody project. Don't actually drop out.</span></p>
+                <p>&copy; 2025 Nigatola University of Engineering & Technology. All rights reserved.</p>
+                <p class="disclaimer">NUET is a parody project. Don't actually drop out of real university.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Application Modal -->
-    <div id="application-modal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <h3>NUET Application Form</h3>
-            <form id="application-form">
-                <div class="form-group">
-                    <label for="name">Full Name:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="funny-reason">Why are you hilarious?</label>
-                    <textarea id="funny-reason" name="funny-reason" rows="4" placeholder="Convince us with your wit..."></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="best-meme">Link to your best meme:</label>
-                    <input type="url" id="best-meme" name="best-meme" placeholder="https://...">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit Application</button>
-            </form>
+    <!-- Event Popup Modal -->
+    <div id="event-modal" class="modal">
+        <div class="modal-content glass-panel">
+            <span class="close" onclick="closeEventModal()">&times;</span>
+            <div id="event-modal-content">
+                <!-- Event details will be populated by JavaScript -->
+            </div>
         </div>
     </div>
-
-    <!-- Disco Mode Elements -->
-    <div id="disco-lights" class="disco-lights hidden"></div>
-    <canvas id="confetti-canvas" class="confetti-canvas"></canvas>
 
     <script src="js/script.js"></script>
 </body>
