@@ -1,0 +1,408 @@
+/* Events & Calendar Styles */
+
+.events {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--primary-bg) 100%);
+    position: relative;
+}
+
+.events-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+/* Calendar Widget */
+.calendar-widget {
+    padding: 2rem;
+    position: relative;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.calendar-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.calendar-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-nav {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.btn-nav:hover {
+    background: var(--accent-purple);
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+}
+
+#current-month {
+    font-weight: 600;
+    color: var(--text-primary);
+    min-width: 150px;
+    text-align: center;
+}
+
+/* Calendar Grid */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: var(--glass-border);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.calendar-day-header {
+    background: var(--secondary-bg);
+    padding: 0.8rem 0.5rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.calendar-day {
+    background: var(--glass-bg);
+    padding: 1rem 0.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.calendar-day:hover {
+    background: var(--glass-border);
+    color: var(--text-primary);
+}
+
+.calendar-day.empty {
+    background: var(--primary-bg);
+    cursor: default;
+}
+
+.calendar-day.today {
+    background: var(--accent-purple);
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 10px var(--accent-purple);
+}
+
+.calendar-day.has-event {
+    background: var(--accent-teal);
+    color: white;
+    font-weight: bold;
+    animation: eventPulse 2s ease-in-out infinite;
+}
+
+.calendar-day.has-event::after {
+    content: '🎉';
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    font-size: 0.8rem;
+}
+
+@keyframes eventPulse {
+    0%, 100% {
+        box-shadow: 0 0 5px var(--accent-teal);
+    }
+    50% {
+        box-shadow: 0 0 15px var(--accent-teal), 0 0 25px var(--accent-teal);
+    }
+}
+
+/* Upcoming Events */
+.upcoming-events {
+    padding: 2rem;
+}
+
+.upcoming-events h3 {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    background: var(--gradient-secondary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.event-item {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.event-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.event-item:hover::before {
+    left: 100%;
+}
+
+.event-item:hover {
+    transform: translateX(10px);
+    border-color: var(--accent-purple);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);
+}
+
+.event-date {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--accent-purple);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.event-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.event-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.event-type {
+    display: inline-block;
+    background: var(--accent-teal);
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+/* Event Type Colors */
+.event-item[data-type="competition"] .event-type {
+    background: var(--accent-pink);
+}
+
+.event-item[data-type="workshop"] .event-type {
+    background: var(--accent-purple);
+}
+
+.event-item[data-type="hackathon"] .event-type {
+    background: linear-gradient(45deg, var(--accent-purple), var(--accent-teal));
+}
+
+.event-item[data-type="celebration"] .event-type {
+    background: linear-gradient(45deg, var(--accent-pink), var(--accent-purple));
+}
+
+/* Event Detail Modal Styles */
+.event-detail {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.event-detail strong {
+    color: var(--text-primary);
+}
+
+.day-event {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    border-left: 4px solid var(--accent-purple);
+}
+
+.day-event h4 {
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.day-event p {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.day-event small {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* News Flash Animation */
+.news-flash {
+    position: absolute;
+    top: -50px;
+    right: 20px;
+    background: var(--accent-pink);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    animation: newsFlash 3s ease-in-out infinite;
+    z-index: 10;
+}
+
+@keyframes newsFlash {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10%, 90% {
+        transform: translateY(60px) rotate(-5deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(60px) rotate(5deg);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .events-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .calendar-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .calendar-nav {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .calendar-widget,
+    .upcoming-events {
+        padding: 1.5rem;
+    }
+    
+    .calendar-grid {
+        gap: 2px;
+    }
+    
+    .calendar-day {
+        min-height: 40px;
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .calendar-day-header {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .event-item {
+        padding: 1rem;
+    }
+    
+    .event-title {
+        font-size: 1.1rem;
+    }
+    
+    .event-description {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .calendar-header h3 {
+        font-size: 1.2rem;
+    }
+    
+    #current-month {
+        min-width: 120px;
+        font-size: 0.9rem;
+    }
+    
+    .btn-nav {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .calendar-day {
+        min-height: 35px;
+        font-size: 0.8rem;
+    }
+    
+    .event-item:hover {
+        transform: none;
+    }
+    
+    .upcoming-events h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Special Event Highlights */
+.special-event {
+    border: 2px solid var(--accent-pink);
+    background: linear-gradient(135deg, var(--glass-bg), rgba(236, 72, 153, 0.1));
+    animation: specialGlow 3s ease-in-out infinite;
+}
+
+@keyframes specialGlow {
+    0%, 100% {
+        box-shadow: 0 0 5px var(--accent-pink);
+    }
+    50% {
+        box-shadow: 0 0 20px var(--accent-pink), 0 0 30px var(--accent-pink);
+    }
+}

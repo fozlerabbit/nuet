@@ -1,0 +1,404 @@
+/* Departments & Halls Styles */
+
+.departments, .halls {
+    padding: 5rem 0;
+    position: relative;
+}
+
+.departments {
+    background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+}
+
+.halls {
+    background: var(--primary-bg);
+}
+
+/* Departments Grid */
+.departments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.department-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.department-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.department-card:hover {
+    transform: translateY(-10px) rotateX(5deg);
+    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+    border-color: var(--accent-purple);
+}
+
+.department-card:hover::before {
+    opacity: 0.1;
+}
+
+.department-card:hover .department-name {
+    color: var(--text-primary);
+    text-shadow: 0 0 10px var(--accent-purple);
+}
+
+.department-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.department-specialization {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.department-card:hover .department-specialization {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Special Department Cards with Fun Icons */
+.department-card.special-dept {
+    background: linear-gradient(135deg, var(--glass-bg), rgba(99, 102, 241, 0.1));
+}
+
+.department-card.special-dept::after {
+    content: attr(data-emoji);
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    opacity: 0.3;
+    transition: all 0.3s ease;
+}
+
+.department-card.special-dept:hover::after {
+    opacity: 1;
+    transform: scale(1.2) rotate(10deg);
+}
+
+/* Halls Section */
+.halls-carousel {
+    position: relative;
+    overflow: hidden;
+    margin-top: 3rem;
+}
+
+.halls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.hall-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hall-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        from 0deg,
+        transparent,
+        var(--accent-purple),
+        transparent,
+        var(--accent-teal),
+        transparent
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -2;
+    animation: rotate 10s linear infinite;
+}
+
+.hall-card::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: var(--primary-bg);
+    border-radius: 18px;
+    z-index: -1;
+}
+
+.hall-card:hover::before {
+    opacity: 0.3;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.hall-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.hall-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: var(--gradient-secondary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hall-description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+.hall-features {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.hall-feature {
+    background: var(--glass-border);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Tilt Effect on Hover */
+.department-card:hover,
+.hall-card:hover {
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease;
+}
+
+.department-card:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg) translateY(-10px);
+}
+
+.hall-card:hover {
+    transform: perspective(1000px) rotateX(-3deg) rotateY(3deg) translateY(-5px);
+}
+
+/* Interactive Campus Map Styles */
+.campus-map {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.map-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto;
+    aspect-ratio: 3/2;
+    background: linear-gradient(135deg, var(--secondary-bg), var(--primary-bg));
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid var(--glass-border);
+}
+
+.map-location {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--accent-purple);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px var(--accent-purple);
+    animation: pulse-map 2s infinite;
+}
+
+.map-location:hover {
+    transform: scale(1.5);
+    background: var(--accent-pink);
+    box-shadow: 0 0 20px var(--accent-pink);
+}
+
+.map-location.hall { background: var(--accent-teal); }
+.map-location.dept { background: var(--accent-purple); }
+.map-location.facility { background: var(--accent-pink); }
+
+@keyframes pulse-map {
+    0%, 100% {
+        box-shadow: 0 0 10px currentColor;
+    }
+    50% {
+        box-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
+    }
+}
+
+/* Tooltip for Map Locations */
+.map-tooltip {
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.map-location:hover .map-tooltip {
+    opacity: 1;
+}
+
+/* Department Specialization Popup */
+.dept-specializations {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 1rem;
+    margin-top: 1rem;
+    z-index: 10;
+    animation: slideUp 0.3s ease;
+}
+
+.department-card:hover .dept-specializations {
+    display: block;
+}
+
+.specialization-item {
+    padding: 0.3rem 0;
+    border-bottom: 1px solid var(--glass-border);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.specialization-item:last-child {
+    border-bottom: none;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .departments-grid,
+    .halls-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .department-card,
+    .hall-card {
+        padding: 1.5rem;
+        min-height: 180px;
+    }
+    
+    .department-name,
+    .hall-name {
+        font-size: 1.2rem;
+    }
+    
+    .map-container {
+        aspect-ratio: 4/3;
+    }
+    
+    .map-location {
+        width: 15px;
+        height: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .department-card,
+    .hall-card {
+        padding: 1rem;
+        min-height: 150px;
+    }
+    
+    .department-name,
+    .hall-name {
+        font-size: 1.1rem;
+    }
+    
+    .hall-features {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .hall-feature {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
+    }
+}

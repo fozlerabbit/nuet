@@ -1,0 +1,547 @@
+/* Admin Panel Styles */
+
+.admin {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.admin::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 30% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Admin Grid */
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Admin Cards */
+.admin-card {
+    padding: 2.5rem;
+    text-align: center;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    border: 2px solid transparent;
+}
+
+.admin-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        from 0deg,
+        var(--accent-purple),
+        var(--accent-pink),
+        var(--accent-teal),
+        var(--accent-purple)
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -2;
+    animation: adminRotate 15s linear infinite;
+}
+
+.admin-card::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: var(--primary-bg);
+    border-radius: 18px;
+    z-index: -1;
+    transition: background 0.3s ease;
+}
+
+.admin-card:hover::before {
+    opacity: 0.3;
+}
+
+.admin-card:hover::after {
+    background: var(--secondary-bg);
+}
+
+@keyframes adminRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.admin-card:hover {
+    transform: translateY(-20px) scale(1.05);
+    box-shadow: 0 30px 60px rgba(99, 102, 241, 0.4);
+    border-color: var(--accent-purple);
+}
+
+/* Admin Avatar */
+.admin-avatar {
+    position: relative;
+    margin-bottom: 1.5rem;
+    width: 120px;
+    height: 120px;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 3px solid var(--glass-border);
+}
+
+.admin-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: grayscale(0.3) brightness(0.9);
+}
+
+.admin-card:hover .admin-avatar {
+    transform: scale(1.1) rotate(3deg);
+    border-color: var(--accent-purple);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+}
+
+.admin-card:hover .admin-avatar img {
+    transform: scale(1.1);
+    filter: grayscale(0) brightness(1);
+}
+
+/* Meme Overlay Effect */
+.admin-meme-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.8),
+        rgba(99, 102, 241, 0.3)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 17px;
+}
+
+.admin-card:hover .admin-meme-overlay {
+    opacity: 1;
+}
+
+/* Admin Info */
+.admin-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.admin-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.admin-card:hover .admin-name {
+    transform: scale(1.05);
+    text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+}
+
+.admin-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent-teal);
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.admin-card:hover .admin-title {
+    background: var(--accent-teal);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(20, 184, 166, 0.3);
+}
+
+.admin-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    flex: 1;
+    transition: color 0.3s ease;
+}
+
+.admin-card:hover .admin-description {
+    color: var(--text-primary);
+}
+
+/* Admin Email Button */
+.admin-email {
+    background: var(--gradient-secondary);
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.admin-email::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.admin-email:hover::before {
+    left: 100%;
+}
+
+.admin-email:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(236, 72, 153, 0.4);
+    text-decoration: none;
+    color: white;
+}
+
+/* Special Admin Card Effects */
+.admin-card:nth-child(1) {
+    /* Founder - Crown Effect */
+    background: radial-gradient(circle at center, rgba(255, 215, 0, 0.05) 0%, transparent 70%);
+}
+
+.admin-card:nth-child(1)::after {
+    background: radial-gradient(circle at center, rgba(255, 215, 0, 0.02) 0%, var(--primary-bg) 70%);
+}
+
+.admin-card:nth-child(2) {
+    /* Vice Chancellor - Tea Steam Effect */
+    position: relative;
+}
+
+.admin-card:nth-child(2)::before {
+    background: conic-gradient(
+        from 0deg,
+        var(--accent-teal),
+        rgba(255, 255, 255, 0.1),
+        var(--accent-teal)
+    );
+}
+
+.admin-card:nth-child(3) {
+    /* Proctor - Fire Effect */
+    background: radial-gradient(circle at center, rgba(255, 69, 0, 0.05) 0%, transparent 70%);
+}
+
+.admin-card:nth-child(4) {
+    /* Student Union President - Megaphone Vibes */
+    background: radial-gradient(circle at center, rgba(75, 85, 99, 0.05) 0%, transparent 70%);
+}
+
+/* Floating Admin Badges */
+.admin-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--accent-purple);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+    }
+}
+
+/* Admin Stats */
+.admin-stats {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease 0.2s;
+}
+
+.admin-card:hover .admin-stats {
+    opacity: 1;
+}
+
+.stat-item {
+    background: var(--glass-bg);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    border: 1px solid var(--glass-border);
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .admin-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .admin-card {
+        padding: 2rem;
+        min-height: 350px;
+    }
+    
+    .admin-avatar {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .admin-name {
+        font-size: 1.2rem;
+    }
+    
+    .admin-title {
+        font-size: 1rem;
+    }
+    
+    .admin-description {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        max-width: 400px;
+        margin: 2rem auto 0;
+    }
+    
+    .admin-card {
+        padding: 2rem;
+        min-height: 380px;
+    }
+    
+    .admin-avatar {
+        width: 110px;
+        height: 110px;
+    }
+    
+    .admin-card:hover {
+        transform: translateY(-10px) scale(1.02);
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-card {
+        padding: 1.5rem;
+        min-height: 350px;
+    }
+    
+    .admin-avatar {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 1rem;
+    }
+    
+    .admin-name {
+        font-size: 1.1rem;
+    }
+    
+    .admin-title {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .admin-description {
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+    }
+    
+    .admin-email {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.8rem;
+    }
+    
+    .admin-badge {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .admin-card,
+    .admin-avatar,
+    .admin-name,
+    .admin-title,
+    .admin-badge {
+        animation: none;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    
+    .admin-card:hover {
+        transform: none;
+    }
+    
+    .admin-card::before {
+        animation: none;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .admin-card {
+        border: 2px solid var(--text-primary);
+        background: var(--primary-bg);
+    }
+    
+    .admin-name,
+    .admin-description {
+        color: var(--text-primary);
+        background: none;
+        -webkit-text-fill-color: var(--text-primary);
+    }
+    
+    .admin-title {
+        background: var(--text-primary);
+        color: var(--primary-bg);
+    }
+    
+    .admin-email {
+        background: var(--text-primary);
+        color: var(--primary-bg);
+    }
+    
+    .admin-avatar {
+        border-color: var(--text-primary);
+    }
+}
+
+/* Print Styles */
+@media print {
+    .admin {
+        background: white;
+        padding: 2rem 0;
+    }
+    
+    .admin-grid {
+        display: block;
+    }
+    
+    .admin-card {
+        background: white;
+        border: 1px solid #ccc;
+        box-shadow: none;
+        transform: none;
+        margin-bottom: 2rem;
+        break-inside: avoid;
+        padding: 1.5rem;
+        min-height: auto;
+    }
+    
+    .admin-avatar {
+        border-color: #ccc;
+        transform: none;
+    }
+    
+    .admin-avatar img {
+        filter: none;
+        transform: none;
+    }
+    
+    .admin-name {
+        color: #000;
+        background: none;
+        -webkit-text-fill-color: #000;
+    }
+    
+    .admin-title {
+        background: #f0f0f0;
+        color: #333;
+        transform: none;
+    }
+    
+    .admin-description {
+        color: #333;
+    }
+    
+    .admin-email {
+        background: #333;
+        color: white;
+        transform: none;
+    }
+    
+    .admin::before,
+    .admin-card::before,
+    .admin-card::after,
+    .admin-badge {
+        display: none;
+    }
+}

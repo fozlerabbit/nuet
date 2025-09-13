@@ -1,0 +1,384 @@
+/* Animated Stats Counter Styles */
+
+.stats {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.stats::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(20, 184, 166, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Stat Card Base Styles */
+.stat-card {
+    text-align: center;
+    padding: 3rem 2rem;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        from 0deg at 50% 50%,
+        transparent 0deg,
+        var(--accent-purple) 90deg,
+        transparent 180deg,
+        var(--accent-teal) 270deg,
+        transparent 360deg
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: -2;
+    animation: statRotate 10s linear infinite;
+}
+
+.stat-card::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: var(--primary-bg);
+    border-radius: 18px;
+    z-index: -1;
+    transition: background 0.3s ease;
+}
+
+.stat-card:hover::before {
+    opacity: 0.6;
+}
+
+.stat-card:hover::after {
+    background: var(--secondary-bg);
+}
+
+@keyframes statRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.stat-card:hover {
+    transform: translateY(-20px) scale(1.05);
+    box-shadow: 0 30px 60px rgba(99, 102, 241, 0.3);
+}
+
+/* Stat Numbers */
+.stat-number {
+    font-size: 4rem;
+    font-weight: 800;
+    font-family: 'JetBrains Mono', monospace;
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-teal), var(--accent-pink));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    position: relative;
+    line-height: 1;
+    text-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover .stat-number {
+    transform: scale(1.1);
+    text-shadow: 0 0 40px rgba(99, 102, 241, 0.8);
+}
+
+/* Counter Animation Effect */
+.stat-number.counting {
+    animation: numberGlow 0.1s ease infinite alternate;
+}
+
+@keyframes numberGlow {
+    0% {
+        text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+        transform: scale(1);
+    }
+    100% {
+        text-shadow: 0 0 30px rgba(99, 102, 241, 0.8), 0 0 40px rgba(20, 184, 166, 0.4);
+        transform: scale(1.02);
+    }
+}
+
+/* Stat Labels */
+.stat-label {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.stat-card:hover .stat-label {
+    color: var(--text-primary);
+}
+
+/* Individual Stat Card Variations */
+.stat-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.stat-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.stat-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.stat-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+/* Stat Card Icons */
+.stat-card::before {
+    content: attr(data-icon);
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    opacity: 0.1;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.stat-card:hover::before {
+    opacity: 0.3;
+    transform: scale(1.2) rotate(10deg);
+}
+
+/* Animated Background Particles */
+.stats::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, rgba(99, 102, 241, 0.3), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(20, 184, 166, 0.3), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(236, 72, 153, 0.3), transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(99, 102, 241, 0.3), transparent),
+        radial-gradient(2px 2px at 160px 30px, rgba(20, 184, 166, 0.3), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: particleFloat 20s linear infinite;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+@keyframes particleFloat {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-200px, -100px); }
+}
+
+/* Progress Bar Animation */
+.stat-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-purple), var(--accent-teal));
+    border-radius: 0 0 20px 20px;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.stat-card.animated .stat-progress {
+    transform: scaleX(1);
+}
+
+/* Milestone Celebrations */
+.stat-card.milestone {
+    animation: celebrateMilestone 2s ease-in-out;
+}
+
+@keyframes celebrateMilestone {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.05) rotate(2deg); }
+    50% { transform: scale(1.1) rotate(-2deg); }
+    75% { transform: scale(1.05) rotate(1deg); }
+}
+
+/* Loading State */
+.stat-card.loading .stat-number {
+    background: linear-gradient(
+        90deg,
+        var(--glass-bg) 0%,
+        var(--glass-border) 50%,
+        var(--glass-bg) 100%
+    );
+    background-size: 200% 100%;
+    animation: statShimmer 1.5s ease-in-out infinite;
+    color: transparent;
+}
+
+@keyframes statShimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .stat-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 3rem;
+    }
+    
+    .stat-label {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .stat-card {
+        padding: 2.5rem 2rem;
+        max-width: none;
+    }
+    
+    .stat-number {
+        font-size: 3.5rem;
+    }
+    
+    .stat-label {
+        font-size: 1rem;
+    }
+    
+    .stat-card:hover {
+        transform: translateY(-10px) scale(1.02);
+    }
+}
+
+@media (max-width: 480px) {
+    .stat-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    .stat-label {
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+    }
+    
+    /* Simplify animations on mobile */
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(99, 102, 241, 0.2);
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .stat-card,
+    .stat-number,
+    .stat-card::before,
+    .stat-progress {
+        animation: none;
+        transition: none;
+    }
+    
+    .stat-card:hover {
+        transform: none;
+    }
+    
+    .stats::after {
+        animation: none;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .stat-card {
+        border: 2px solid var(--text-primary);
+        background: var(--primary-bg);
+    }
+    
+    .stat-number {
+        color: var(--text-primary);
+        background: none;
+        -webkit-text-fill-color: var(--text-primary);
+    }
+    
+    .stat-label {
+        color: var(--text-primary);
+    }
+}
+
+/* Print Styles */
+@media print {
+    .stats {
+        background: white;
+        color: black;
+    }
+    
+    .stat-card {
+        background: white;
+        border: 1px solid black;
+        box-shadow: none;
+        transform: none;
+    }
+    
+    .stat-number {
+        color: black;
+        background: none;
+        -webkit-text-fill-color: black;
+        text-shadow: none;
+    }
+    
+    .stat-label {
+        color: black;
+    }
+    
+    .stats::before,
+    .stats::after {
+        display: none;
+    }
+}
