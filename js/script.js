@@ -92,7 +92,14 @@ const events = [
     { date: "2025-03-28", title: "Procrastination Workshop", description: "Learn to delay like a pro 🕐", type: "workshop" },
     { date: "2025-04-05", title: "Midnight Coding Marathon", description: "Code till you drop 💻", type: "hackathon" },
     { date: "2025-04-12", title: "WiFi Password Hunt", description: "Find the hidden network 📶", type: "treasure-hunt" },
-    { date: "2025-04-20", title: "420 Engineering Day", description: "Blaze it with knowledge 🌿", type: "celebration" }
+    { date: "2025-04-20", title: "420 Engineering Day", description: "Blaze it with knowledge 🌿", type: "celebration" },
+   
+    { date: "2025-09-15", title: "Annual Meme Olympiad 2025", description: "May the best meme win! 🏆", type: "competition" },
+    { date: "2025-09-22", title: "Tea vs Coffee Debate", description: "The ultimate showdown ☕", type: "debate" },
+    { date: "2025-09-28", title: "Procrastination Workshop", description: "Learn to delay like a pro 🕐", type: "workshop" },
+    { date: "2025-09-05", title: "Midnight Coding Marathon", description: "Code till you drop 💻", type: "hackathon" },
+    { date: "2025-09-12", title: "WiFi Password Hunt", description: "Find the hidden network 📶", type: "treasure-hunt" },
+    { date: "2025-09-20", title: "420 Engineering Day", description: "Blaze it with knowledge 🌿", type: "celebration" }
 ];
 
 const fakeNews = [
@@ -1502,4 +1509,5 @@ window.NUET = {
     prevMonth,
     nextMonth,
     closeModal
+
 };
