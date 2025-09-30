@@ -63,7 +63,7 @@ const admins = [
     {
         name: "Mahdi Shihab",
         title: "Founder 👑",
-        description: "The mastermind behind NUET's legendary reputation. Known for making impossible things happen with a Drake meme and a crown.",
+        description: "NUET-এর কিংবদন্তি খ্যাতির মূল পরিকল্পনাকারী। ড্রেক মিম এবং মুকুট দিয়ে অসম্ভব কিছু ঘটানোর জন্য পরিচিত।",
         email: "mahdi@nuet.world",
         avatar: "https://raw.githubusercontent.com/fozlerabbit/nuet/refs/heads/main/images%20(1).jpeg",
         memeStyle: "Drake with crown"
@@ -71,7 +71,7 @@ const admins = [
     {
         name: "Al Arafat Rohman",
         title: "Vice Chancellor 🥤",
-        description: "Shocked Pikachu energy with tea-sipping wisdom. Makes all academic decisions while maintaining perfect surprise face.",
+        description: "চা-চুমুক দেওয়ার মতো বুদ্ধিমত্তার সাথে চমকে ওঠা পিকাচুর শক্তি। নিখুঁত অবাক মুখ বজায় রেখে সমস্ত একাডেমিক সিদ্ধান্ত নেয়।",
         email: "arafat@nuet.world", 
         avatar: "https://raw.githubusercontent.com/fozlerabbit/nuet/refs/heads/main/images%20(1).jpeg",
         memeStyle: "Shocked Pikachu sipping tea"
@@ -79,7 +79,7 @@ const admins = [
     {
         name: "Cherin Raiyan",
         title: "Proctor 🔥", 
-        description: "Disaster Girl vibes with campus handbook authority. Everything's fine while chaos reigns supreme.",
+        description: "ক্যাম্পাসের হ্যান্ডবুক কর্তৃপক্ষের সাথে দুর্যোগের আমেজ। সবকিছু ঠিকঠাক থাকলেও বিশৃঙ্খলা চরমে।",
         email: "cherin@nuet.world",
         avatar: "https://raw.githubusercontent.com/fozlerabbit/nuet/refs/heads/main/images%20(1).jpeg",
         memeStyle: "Disaster Girl holding campus handbook"
@@ -103,14 +103,14 @@ const events = [
 ];
 
 const fakeNews = [
-    "Breaking: NUET students discover new way to attend classes while sleeping 😴",
-    "Research shows 99% of engineering problems can be solved with duct tape 🔧",
-    "Campus cat elected as new Dean of Purr-ing Sciences 🐱",
-    "NUET cafeteria finally serves edible food, students in shock 🍽️",
-    "Local student passes exam without cramming, professors investigating 📚",
-    "WiFi password changed to 'password123', chaos ensues 📶",
-    "Engineering building elevator breaks, students learn to use stairs 🏃‍♂️",
-    "Professor arrives on time, students check if it's opposite day 🕐"
+"ব্রেকিং: NUET-এর শিক্ষার্থীরা ঘুমের মধ্যে ক্লাসে যাওয়ার নতুন উপায় আবিষ্কার করেছে 😴",
+"গবেষণায় দেখা গেছে ৯৯% প্রকৌশল সমস্যার সমাধান ডাক্ট টেপ দিয়ে করা যায় 🔧",
+"পুরিং সায়েন্সেসের নতুন ডিন নির্বাচিত হয়েছে ক্যাম্পাস বিড়াল 🐱",
+"NUET-এর ক্যাফেটেরিয়ায় অবশেষে ভোজ্য খাবার পরিবেশন করা হচ্ছে, শিক্ষার্থীরা হতবাক 🍽️",
+"স্থানীয় শিক্ষার্থী কোনও ঝামেলা ছাড়াই পরীক্ষায় উত্তীর্ণ, অধ্যাপকরা তদন্ত করছেন 📚",
+"ওয়াইফাই পাসওয়ার্ড 'পাসওয়ার্ড১২৩'-এ পরিবর্তন, বিশৃঙ্খলা দেখা 📶",
+"ইঞ্জিনিয়ারিং ভবনের লিফট ভেঙে গেছে, শিক্ষার্থীরা সিঁড়ি ব্যবহার করতে শিখেছে 🏃‍♂️",
+"প্রফেসর সময়মতো আসেন, শিক্ষার্থীরা পরীক্ষা করেন বিপরীত দিন কিনা 🕐"
 ];
 
 let konamiCode = [];
@@ -742,16 +742,16 @@ function showDayEvents(dayEvents) {
 
 function showSyllabusGenerator() {
     const courses = [
-        "Advanced Netflix Binge-Watching (3 credits)",
-        "Professional Procrastination (4 credits)",
-        "Introduction to Overthinking (2 credits)",
-        "Quantum Confusion Theory (5 credits)",
-        "Applied Sarcasm Engineering (3 credits)",
-        "Meme Studies and Analysis (2 credits)",
-        "Coffee Dependency Management (1 credit)",
-        "Social Media Scrolling Optimization (2 credits)",
-        "Crisis Management Through Panic (4 credits)",
-        "The Art of Looking Busy (3 credits)"
+"অ্যাডভান্সড নেটফ্লিক্স বিঞ্জ-ওয়াচিং (৩টি ক্রেডিট)",
+"পেশাদার বিলম্ব (৪টি ক্রেডিট)",
+"অতিরিক্ত চিন্তাভাবনার ভূমিকা (২টি ক্রেডিট)",
+"কোয়ান্টাম কনফিউশন থিওরি (৫টি ক্রেডিট)",
+"অ্যাপ্লাইড সারকাজম ইঞ্জিনিয়ারিং (৩টি ক্রেডিট)",
+"মিম স্টাডিজ অ্যান্ড অ্যানালাইসিস (২টি ক্রেডিট)",
+"কফি ডিপেন্ডেন্সি ম্যানেজমেন্ট (১টি ক্রেডিট)",
+"সোশ্যাল মিডিয়া স্ক্রোলিং অপ্টিমাইজেশন (২টি ক্রেডিট)",
+"আতঙ্কের মাধ্যমে সংকট ব্যবস্থাপনা (৪টি ক্রেডিট)",
+"ব্যস্ত থাকার শিল্প (৩টি ক্রেডিট)"
     ];
     
     const randomCourses = [];
@@ -1511,5 +1511,6 @@ window.NUET = {
     closeModal
 
 };
+
 
 
