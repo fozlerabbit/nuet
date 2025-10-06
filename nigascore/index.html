@@ -1,1 +1,49 @@
-index
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shaplabagi Score Test</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="quiz-container">
+
+    <!-- Section 1: Header -->
+    <div id="header-section">
+      <div id="logo-title">
+        <img id="logo-img" src="assets.png" alt="Shaplabagi Logo">
+        <h1>Shaplabagi Score Test</h1>
+      </div>
+    </div>
+
+    <!-- Section 2: Question + Progress -->
+    <div id="question-section">
+      <div id="progress-container">
+        <div id="progress-bar"></div>
+      </div>
+      <p id="progress-text">Question 1 of 20</p>
+      <div id="question-box">
+        <p id="question"></p>
+      </div>
+    </div>
+
+    <!-- Section 3: Answers -->
+    <div id="answer-section">
+      <div id="answer-box"></div>
+    </div>
+
+    <!-- Section 4: Scorecard (Moved Down Here) -->
+    <div id="scorecard">
+      <p>Shaplabagi Found: <span id="supporter-count">0</span></p>
+    </div>
+
+    <!-- Section 5: Result -->
+    <div id="result-box" style="display:none;"></div>
+
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
