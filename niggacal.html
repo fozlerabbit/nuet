@@ -770,9 +770,9 @@
             prevButton.disabled = currentQuestion === 0;
             
             if (currentQuestion === quizQuestions.length - 1) {
-                nextButton.textContent = userAnswers[currentQuestion] !== null ? "ফলাফল দেখুন 🎯" : "পরবর্তী →";
+                nextButton.textContent = userAnswers[currentQuestion] !== null ? "ফলাফল দেখুন 🎯" : "Next →";
             } else {
-                nextButton.textContent = "পরবর্তী →";
+                nextButton.textContent = "Next →";
                 nextButton.disabled = userAnswers[currentQuestion] === null;
             }
         }
