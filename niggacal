@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>নিগা ক্যালকুলেটর - আপনার নিগামূলক যাত্রা</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #333;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+            animation: logoFloat 3s ease-in-out infinite;
+            overflow: hidden;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #4CAF50, #81C784);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 8px;
+        }
+
+        .nav-links a:hover {
+            color: #4CAF50;
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        
+        .quiz-container {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+            border: 1px solid #333;
+            width: 100%;
+            max-width: 900px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .quiz-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4CAF50, #81C784, #4CAF50);
+            background-size: 200% 100%;
+            animation: gradientMove 3s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid #333;
+        }
+        
+        .quiz-title {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #4CAF50, #81C784);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+            animation: titlePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .quiz-subtitle {
+            font-size: 1.3rem;
+            color: #aaa;
+            font-weight: 300;
+        }
+        
+        .question-container {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #222 0%, #2a2a2a 100%);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            border: 1px solid #333;
+            transition: transform 0.3s ease;
+        }
+
+        .question-container:hover {
+            transform: translateY(-5px);
+        }
+        
+        .question-number {
+            font-size: 1.3rem;
+            color: #4CAF50;
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 20px;
+        }
+        
+        .question-text {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            color: #f0f0f0;
+        }
+        
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .option {
+            background: linear-gradient(135deg, #2a2a2a 0%, #333 100%);
+            padding: 18px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #404040;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(76, 175, 80, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .option:hover::before {
+            left: 100%;
+        }
+        
+        .option:hover {
+            background: linear-gradient(135deg, #333 0%, #3a3a3a 100%);
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+            border-color: #4CAF50;
+        }
+        
+        .option.selected {
+            background: linear-gradient(135deg, #1b5e20 0%, #2E7D32 100%);
+            border-color: #4CAF50;
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+        }
+        
+        .option-letter {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background: #404040;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            margin-right: 15px;
+            font-weight: bold;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .selected .option-letter {
+            background: #4CAF50;
+            color: #000;
+            box-shadow: 0 0 15px rgba(76, 175, 80, 0.8);
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 35px;
+            gap: 15px;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        button:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+        
+        button:hover {
+            background: linear-gradient(135deg, #388E3C, #1B5E20);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.5);
+        }
+        
+        button:disabled {
+            background: linear-gradient(135deg, #333, #2a2a2a);
+            color: #666;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .progress-container {
+            margin-top: 25px;
+            background: #222;
+            border-radius: 15px;
+            height: 12px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #81C784);
+            width: 0%;
+            transition: width 0.5s ease;
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.6);
+        }
+        
+        .result-container {
+            text-align: center;
+            padding: 50px 20px;
+            display: none;
+            animation: fadeIn 0.6s ease;
+        }
+        
+        .result-title {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #4CAF50, #81C784);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+        }
+        
+        .score {
+            font-size: 6rem;
+            background: linear-gradient(135deg, #4CAF50, #81C784);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 30px 0;
+            text-shadow: 0 0 30px rgba(76, 175, 80, 0.5);
+            animation: scorePopIn 0.6s ease;
+        }
+
+        @keyframes scorePopIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .message {
+            font-size: 1.6rem;
+            margin-bottom: 35px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+        
+        .restart-btn {
+            background: linear-gradient(135deg, #2196F3, #1565C0);
+            margin-top: 20px;
+        }
+        
+        .restart-btn:hover {
+            background: linear-gradient(135deg, #0b7dda, #0d47a1);
+        }
+
+        .footer {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid #333;
+            padding: 40px 20px 20px;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            color: #4CAF50;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #aaa;
+            line-height: 1.8;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #4CAF50;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4CAF50;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #4CAF50;
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            color: #666;
+        }
+
+        .copyright {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .developer-info {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .developer-info a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .developer-info a:hover {
+            text-decoration: underline;
+        }
+
+        .quiz-footer {
+            margin-top: 25px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(76, 175, 80, 0.05) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            text-align: center;
+        }
+
+        .footer-text {
+            color: #aaa;
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        .contact-link {
+            display: inline-block;
+            padding: 10px 25px;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+        }
+
+        .contact-link:hover {
+            background: linear-gradient(135deg, #388E3C, #1B5E20);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(76, 175, 80, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .navbar-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .options-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .quiz-title {
+                font-size: 2.2rem;
+            }
+            
+            .question-text {
+                font-size: 1.3rem;
+            }
+
+            .score {
+                font-size: 4rem;
+            }
+
+            .navigation {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <div class="logo">ন</div>
+                <div class="logo-text">নিগা ক্যালকুলেটর</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">হোম</a></li>
+                <li><a href="#quiz">কুইজ</a></li>
+                <li><a href="https://www.facebook.com/nigatolauniversityofengineeringandtechnologyNUET" target="_blank">যোগাযোগ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="quiz-container" id="home">
+            <div class="quiz-header">
+                <h1 class="quiz-title">নিগা ক্যালকুলেটর</h1>
+                <p class="quiz-subtitle">১০টি নিগামূলক প্রশ্নে আপনাকে স্বাগতম</p>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            
+            <div id="quiz-content">
+                <div class="question-container">
+                    <div class="question-number" id="question-number">প্রশ্ন ১/১০</div>
+                    <h2 class="question-text" id="question-text"></h2>
+                    <div class="options-container" id="options-container"></div>
+                </div>
+                
+                <div class="quiz-footer">
+                    <p class="footer-text">আরও নিগা হতে আমাদের সাথে যোগাযোগ করুন</p>
+                    <a href="https://www.facebook.com/share/19mKiW3THx/" class="contact-link" target="_blank">যোগাযোগ করুন</a>
+                </div>
+                
+                <div class="navigation">
+                    <button id="prev-btn" disabled>← পূর্ববর্তী</button>
+                    <button id="next-btn">পরবর্তী →</button>
+                </div>
+            </div>
+            
+            <div class="result-container" id="result-container">
+                <h2 class="result-title">আপনার ফলাফল</h2>
+                <div class="score" id="score">0%</div>
+                <p class="message" id="message"></p>
+                <button class="restart-btn" id="restart-btn">🔄 আবার খেলুন</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>নিগা ক্যালকুলেটর সম্পর্কে</h3>
+                    <p>এটি একটি মজাদার বাংলা কুইজ প্ল্যাটফর্ম যেখানে আপনি আপনার জ্ঞান পরীক্ষা করতে পারবেন এবং মজা করতে পারবেন।</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>দ্রুত লিংক</h3>
+                    <a href="#home">হোম</a>
+                    <a href="#quiz">কুইজ শুরু করুন</a>
+                    <a href="https://www.facebook.com/share/19mKiW3THx/" target="_blank">যোগাযোগ</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>আমাদের সাথে যুক্ত হন</h3>
+                    <p>সোশ্যাল মিডিয়ায় আমাদের ফলো করুন</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/19mKiW3THx/" target="_blank" title="Facebook">📘</a>
+                        <a href="#" target="_blank" title="Twitter">🐦</a>
+                        <a href="#" target="_blank" title="Instagram">📸</a>
+                        <a href="#" target="_blank" title="YouTube">📺</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 NUET।</p>
+                <p class="developer-info">
+                    ডিজাইন এবং ডেভেলপমেন্ট করেছেন ❤️ দিয়ে | 
+                    <a href="https://www.facebook.com/nigatolauniversityofengineeringandtechnologyNUET" target="_blank">NUET</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const quizQuestions = [
+            {
+                question: "আপনার গায়ের রং?",
+                options: ["অনেক কালো (সূর্যের আলো শোষণ করি)", "কালো", "বাদামি", "উইগা"],
+                correct: 0
+            },
+            {
+                question: "মেয়েরা কি আপনাকে পাত্তা দেয়?",
+                options: ["হ্যাঁ", "না", "Hayre xomag", "আমি নিজেই তাদের পাত্তা দেয় না"],
+                correct: 3
+            },
+            {
+                question: "জাতির আব্বা বঙ্গবল্টুকে কবে নির্মমভাবে টপকানো হয়েছিল?",
+                options: ["২৬ মার্চ", "১৬ ডিসেম্বর", "১৫ আগষ্ট", "জয় বাংলা"],
+                correct: 1
+            },
+            {
+                question: "বাংলাদেশের জাতীয় পশু কি?",
+                options: ["আওয়ামী লীগ", "খাম্বা তারেক", "কালো জানোয়ার", "ময়ূর"],
+                correct: 2
+            },
+            {
+                question: "বঙ্গবল্টুর নগ্ন ছবি দেখে কতক্ষণ goon করবেন?",
+                options: ["১ ঘণ্টা", "২ মিনিট", "জয় বাংলা বলে ৩ ঘণ্টা", "১০ মিনিট"],
+                correct: 2
+            },
+            {
+                question: "বাংলাদেশের জাতীয় কবি কে?",
+                options: ["Didendronath Tagore", "Kayne Nazrul Islam", "Ashton Hall", "Ishowspeed"],
+                correct: 3
+            },
+            {
+                question: "বাংলাদেশের মুক্তিযুদ্ধ কত সালে হয়েছিল?",
+                options: ["১৯৬৫", "১৯৭১", "১৯৫২", "১৯৮১"],
+                correct: 1
+            },
+            {
+                question: "তুলাচাষ করার সময় যদি goon করতে ইচ্ছা হয় তখন কি করবেন?",
+                options: ["হ্যাঁ করব", "ইংরেজ মেয়েদের দেখে goon করব", "না করব না", "mewing এবং goon একসাথে করব"],
+                correct: 1
+            },
+            {
+                question: "রাস্তায় সাদা চামড়ার লোক দেখলে কি করবেন?",
+                options: ["পাথর মারবো", "ধরে পিটাবো", "চাবুক মেরে জোরপূর্বক তাকে দিয়ে তুলাচাষ করাবো", "তাকে যেতে দিবো"],
+                correct: 2
+            },
+            {
+                question: "সূর্যের আলো কত % রিফ্লেক্ট করেন?",
+                options: ["০%", "-৬৯%", "১০%", "১০০%"],
+                correct: 1
+            }
+        ];
+
+        const questionNumberElement = document.getElementById('question-number');
+        const questionTextElement = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const prevButton = document.getElementById('prev-btn');
+        const nextButton = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const quizContent = document.getElementById('quiz-content');
+        const resultContainer = document.getElementById('result-container');
+        const scoreElement = document.getElementById('score');
+        const messageElement = document.getElementById('message');
+        const restartButton = document.getElementById('restart-btn');
+
+        let currentQuestion = 0;
+        let userAnswers = new Array(quizQuestions.length).fill(null);
+
+        function initializeQuiz() {
+            showQuestion(currentQuestion);
+            updateProgressBar();
+            updateNavigationButtons();
+        }
+
+        function showQuestion(index) {
+            const question = quizQuestions[index];
+            questionNumberElement.textContent = `প্রশ্ন ${index + 1}/${quizQuestions.length}`;
+            questionTextElement.textContent = question.question;
+            
+            optionsContainer.innerHTML = '';
+            
+            question.options.forEach((option, optionIndex) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                if (userAnswers[index] === optionIndex) {
+                    optionElement.classList.add('selected');
+                }
+                
+                const optionLetter = document.createElement('div');
+                optionLetter.className = 'option-letter';
+                optionLetter.textContent = String.fromCharCode(65 + optionIndex);
+                
+                const optionText = document.createElement('div');
+                optionText.className = 'option-text';
+                optionText.textContent = option;
+                
+                optionElement.appendChild(optionLetter);
+                optionElement.appendChild(optionText);
+                
+                optionElement.addEventListener('click', () => selectOption(optionIndex));
+                optionsContainer.appendChild(optionElement);
+            });
+        }
+
+        function selectOption(optionIndex) {
+            userAnswers[currentQuestion] = optionIndex;
+            showQuestion(currentQuestion);
+            updateNavigationButtons();
+        }
+
+        function updateNavigationButtons() {
+            prevButton.disabled = currentQuestion === 0;
+            
+            if (currentQuestion === quizQuestions.length - 1) {
+                nextButton.textContent = userAnswers[currentQuestion] !== null ? "ফলাফল দেখুন 🎯" : "পরবর্তী →";
+            } else {
+                nextButton.textContent = "পরবর্তী →";
+                nextButton.disabled = userAnswers[currentQuestion] === null;
+            }
+        }
+
+        function updateProgressBar() {
+            const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
+            progressBar.style.width = progress + '%';
+        }
+
+        function calculateScore() {
+            let correctAnswers = 0;
+            quizQuestions.forEach((question, index) => {
+                if (userAnswers[index] === question.correct) {
+                    correctAnswers++;
+                }
+            });
+            return (correctAnswers / quizQuestions.length) * 100;
+        }
+
+        function getResultMessage(percentage) {
+            if (percentage === 100) {
+                return "অসাধারণ! 🎉 আপনি একজন সত্যিকারের নিগা চ্যাম্পিয়ন! সব প্রশ্নের সঠিক উত্তর দিয়েছেন!";
+            } else if (percentage >= 80) {
+                return "দুর্দান্ত! 🌟 আপনি একজন প্রকৃত নিগা! অসাধারণ পারফরম্যান্স!";
+            } else if (percentage >= 60) {
+                return "ভালো! 👍 আপনার নিগা জ্ঞান মোটামুটি ভালো। আরও উন্নতি সম্ভব!";
+            } else if (percentage >= 40) {
+                return "মন্দ নয়! 😊 আরও চর্চা করলে আপনি আরও ভালো করতে পারবেন!";
+            } else {
+                return "চেষ্টা চালিয়ে যান! 💪 আরও অনুশীলন করুন এবং আবার চেষ্টা করুন!";
+            }
+        }
+
+        function showResults() {
+            const score = calculateScore();
+            quizContent.style.display = 'none';
+            resultContainer.style.display = 'block';
+            scoreElement.textContent = Math.round(score) + '%';
+            messageElement.textContent = getResultMessage(score);
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            userAnswers = new Array(quizQuestions.length).fill(null);
+            resultContainer.style.display = 'none';
+            quizContent.style.display = 'block';
+            initializeQuiz();
+        }
+
+        prevButton.addEventListener('click', function() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+                updateProgressBar();
+                updateNavigationButtons();
+            }
+        });
+
+        nextButton.addEventListener('click', function() {
+            if (currentQuestion < quizQuestions.length - 1) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+                updateProgressBar();
+                updateNavigationButtons();
+            } else {
+                showResults();
+            }
+        });
+
+        restartButton.addEventListener('click', restartQuiz);
+
+        // Initialize quiz when page loads
+        window.addEventListener('DOMContentLoaded', function() {
+            initializeQuiz();
+        });
+    </script>
+</body>
+</html>
