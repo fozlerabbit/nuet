@@ -1,0 +1,219 @@
+/* ============================================
+   NUET ENGINEERING QUIZ - GLOBAL STYLES
+   Dark Theme with Glassmorphism
+   ============================================ */
+
+/* === CSS VARIABLES === */
+:root {
+    /* Color Palette - Dark Theme */
+    --bg-primary: #0a0b1e;
+    --bg-secondary: #1a1b3a;
+    --bg-tertiary: #2a2b4a;
+    
+    /* Accent Colors */
+    --color-purple: #6366f1;
+    --color-teal: #14b8a6;
+    --color-pink: #ec4899;
+    
+    /* Text Colors */
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    
+    /* Status Colors */
+    --color-success: #10b981;
+    --color-error: #ef4444;
+    --color-warning: #f59e0b;
+    
+    /* Shadows & Effects */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --shadow-glow-purple: 0 0 20px rgba(99, 102, 241, 0.4);
+    --shadow-glow-teal: 0 0 20px rgba(20, 184, 166, 0.4);
+    --shadow-glow-pink: 0 0 20px rgba(236, 72, 153, 0.4);
+    
+    /* Glass Effect */
+    --glass-bg: rgba(26, 27, 58, 0.7);
+    --glass-border: rgba(248, 250, 252, 0.1);
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.4s ease;
+    --transition-slow: 0.8s ease;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    
+    /* Font Sizes */
+    --font-xs: 0.75rem;
+    --font-sm: 0.875rem;
+    --font-md: 1rem;
+    --font-lg: 1.125rem;
+    --font-xl: 1.5rem;
+    --font-2xl: 2rem;
+    --font-3xl: 3rem;
+}
+
+/* === RESET & BASE STYLES === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* === PARTICLE CANVAS === */
+#particleCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* === MAIN CONTENT === */
+.main-content {
+    position: relative;
+    z-index: 1;
+    min-height: calc(100vh - 80px);
+    padding-top: 80px;
+}
+
+/* === GLASSMORPHISM EFFECT === */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-md);
+}
+
+/* === GRADIENT TEXT === */
+.gradient-text {
+    background: linear-gradient(135deg, var(--color-purple), var(--color-pink), var(--color-teal));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 8s ease infinite;
+}
+
+/* === BUTTONS === */
+button {
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: all var(--transition-normal);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(1);
+}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--color-purple), var(--color-teal));
+    border-radius: 6px;
+    border: 2px solid var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--color-pink), var(--color-purple));
+}
+
+/* === SELECTION === */
+::selection {
+    background: var(--color-purple);
+    color: var(--text-primary);
+}
+
+::-moz-selection {
+    background: var(--color-purple);
+    color: var(--text-primary);
+}
+
+/* === UTILITIES === */
+.text-center {
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease;
+}
+
+.slide-up {
+    animation: slideUp 0.6s ease;
+}
+
+.scale-up {
+    animation: scaleUp 0.4s ease;
+}
+
+/* === RESPONSIVE BREAKPOINTS === */
+@media (max-width: 768px) {
+    :root {
+        --font-xl: 1.25rem;
+        --font-2xl: 1.75rem;
+        --font-3xl: 2.5rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+    }
+    
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --font-xl: 1.125rem;
+        --font-2xl: 1.5rem;
+        --font-3xl: 2rem;
+    }
+    
+    html {
+        font-size: 13px;
+    }
+}
