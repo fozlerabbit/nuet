@@ -644,7 +644,7 @@
                     <h3>আমাদের সাথে যুক্ত হন</h3>
                     <p>সোশ্যাল মিডিয়ায় আমাদের ফলো করুন</p>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/nigatolauniversityofengineeringandtechnologyNUET" target="_blank" title="Facebook">📘</a>
+                        <a href="https://www.facebook.com/nigatolauniversityofengineeringandtechnologyNUET" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
                         <a href="#" target="_blank" title="Twitter">🐦</a>
                         <a href="#" target="_blank" title="Instagram">📸</a>
                         <a href="#" target="_blank" title="YouTube">📺</a>
@@ -791,18 +791,43 @@
             progressBar.style.width = progress + '%';
         }
 
+        // function calculateScore() {
+        //     let correctAnswers = 0;
+        //     quizQuestions.forEach((question, index) => {
+        //         if (userAnswers[index] === question.correct) {
+        //             correctAnswers++;
+        //         }
+        //     });
+        //     return (correctAnswers / quizQuestions.length) * 100;
+        // }
+
+
+
         function calculateScore() {
-            let correctAnswers = 0;
-            quizQuestions.forEach((question, index) => {
-                if (userAnswers[index] === question.correct) {
-                    correctAnswers++;
-                }
-            });
-            return (correctAnswers / quizQuestions.length) * 100;
+    let correctAnswers = 0;
+    quizQuestions.forEach((question, index) => {
+        if (userAnswers[index] === question.correct) {
+            correctAnswers++;
         }
+    });
+    let percentage = (correctAnswers / quizQuestions.length) * 100;
+
+    // 🧾 Apply "VAT" if score is 100%
+    if (percentage === 100) {
+        percentage = 90; // 10% taken as VAT
+    }
+
+    return percentage;
+}
+
+
+        
+        
 
         function getResultMessage(percentage) {
-            if (percentage === 100) {
+            if (percentage === 90) {
+                return "😂 আপনি ১০০% পেতেন, কিন্তু বাকি ১০% দেশ নেতাকে দেওয়া হয়েছে!";
+            } else if (percentage === 100) {
                 return "অসাধারণ! 🎉 আপনি একজন সত্যিকারের নিগা চ্যাম্পিয়ন! সব প্রশ্নের সঠিক উত্তর দিয়েছেন!";
             } else if (percentage >= 80) {
                 return "দুর্দান্ত! 🌟 আপনি একজন প্রকৃত নিগা! অসাধারণ পারফরম্যান্স!";
